@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager App</title>
+    <link href="./styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
+    <main class="w-full max-w-md bg-white rounded-lg shadow p-6">
+      <h1 class="text-2xl font-bold mb-4">Task Manager</h1>
+      <form id="task-form" class="flex flex-col gap-4">
+        <input
+          type="text"
+          id="task-title"
+          class="border p-2 rounded"
+          placeholder="Task title..."
+          required
+        />
+        <input type="date" id="task-due-date" class="border p-2 rounded" />
+        <button
+          type="submit"
+          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+        >
+          Add Task
+        </button>
+      </form>
+      <section id="task-list" class="mt-6 flex flex-col gap-2"></section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
