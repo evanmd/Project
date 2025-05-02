@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskDueDate = document.getElementById('task-due-date');
     const taskList = document.getElementById('task-list');
 
+    //TODO update to use StorageAdapter
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
     const saveTasks = () => {
+        //TODO update to use StorageAdapter
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
@@ -17,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tasks.forEach((task, index) => {
             const taskItem = document.createElement('div');
+            //TODO this is where your line-through bug is happening, you need to move it down the chain, right now it line-through all content 
             taskItem.className = `flex justify-between items-center border rounded p-2 ${task.completed ? 'bg-gray-100 line-through text-gray-500' : 'bg-white'
                 }`;
-
+            //TODO this is the div you should add the line-through when completed
             const info = document.createElement('div');
             info.className = 'flex flex-col';
             info.innerHTML = `
