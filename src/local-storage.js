@@ -1,16 +1,30 @@
 const TASK_STORAGE_KEY = 'tasks';
 
-//TODO import & use this to help break up logic
 export class StorageAdapter {
     static getTasks() {
-        return localStorage.getItem(TASK_STORAGE_KEY) || [];
+        const tasks = localStorage.getItem(TASK_STORAGE_KEY);
+        return tasks ? JSON.parse(tasks) : [];
     }
 
     static setTasks(tasks) {
-        return localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
+        localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
     }
 
-    static appendTask() {
-        //TODO think of the logic for this
+    static appendTask(task) {
+        const tasks = StorageAdapter.getTasks();
+        tasks.push(task);
+        StorageAdapter.setTasks(tasks);
+    }
+
+    static removeTask(index) {
+        const tasks = StorageAdapter.getTasks();
+        tasks.splice(index, 1);
+        StorageAdapter.setTasks(tasks);
+    }
+
+    static toggleTaskComplete(index) {
+        const tasks = StorageAdapter.getTasks();
+        tasks[index].completed = !tasks[index].completed;
+        StorageAdapter.setTasks(tasks);
     }
 }
